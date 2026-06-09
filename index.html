@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Responsive Todo Manager — organize your tasks with ease." />
+  <title>Todo Manager</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <div class="app">
+
+    <header class="app-header">
+      <div class="header-left">
+        <span class="app-icon" aria-hidden="true">✅</span>
+        <h1>Todo Manager</h1>
+      </div>
+      <button class="theme-btn" id="themeBtn" aria-label="Toggle light/dark mode">🌙</button>
+    </header>
+
+    <!-- Stats bar -->
+    <div class="stats" role="status" aria-live="polite" aria-label="Task statistics">
+      <div class="stat-item">
+        <span class="stat-num" id="totalCount">0</span>
+        <span class="stat-label">Total</span>
+      </div>
+      <div class="stat-item">
+        <span class="stat-num" id="activeCount">0</span>
+        <span class="stat-label">Active</span>
+      </div>
+      <div class="stat-item">
+        <span class="stat-num" id="doneCount">0</span>
+        <span class="stat-label">Done</span>
+      </div>
+    </div>
+
+    <!-- Add task -->
+    <form class="add-form" id="addForm" aria-label="Add new task">
+      <div class="input-row">
+        <input
+          type="text"
+          id="taskInput"
+          placeholder="Add a new task..."
+          aria-label="Task description"
+          autocomplete="off"
+          maxlength="120"
+        />
+        <select id="prioritySelect" aria-label="Task priority">
+          <option value="low">🟢 Low</option>
+          <option value="medium" selected>🟡 Medium</option>
+          <option value="high">🔴 High</option>
+        </select>
+        <button type="submit" class="btn-add" aria-label="Add task">Add</button>
+      </div>
+    </form>
+
+    <!-- Filters -->
+    <div class="filters" role="group" aria-label="Filter tasks">
+      <button class="filter-btn active" data-filter="all">All</button>
+      <button class="filter-btn" data-filter="active">Active</button>
+      <button class="filter-btn" data-filter="completed">Completed</button>
+      <button class="filter-btn danger" id="clearDone" aria-label="Clear completed tasks">Clear Done</button>
+    </div>
+
+    <!-- Task list -->
+    <main>
+      <ul class="task-list" id="taskList" role="list" aria-label="Task list" aria-live="polite">
+        <!-- Tasks injected by JS -->
+      </ul>
+      <div class="empty-state" id="emptyState" hidden aria-live="polite">
+        <span aria-hidden="true">📭</span>
+        <p>No tasks here. Add one above!</p>
+      </div>
+    </main>
+
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
